@@ -1,6 +1,50 @@
 {
   "version": 2,
-  "projects": {},
+  "projects": {
+    "material": {
+      "projectType": "library",
+      "root": "packages/material",
+      "sourceRoot": "packages/material/src",
+      "prefix": "ngx-declarative",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:package",
+          "options": {
+            "tsConfig": "packages/material/tsconfig.lib.json",
+            "project": "packages/material/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/material/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "packages/material/tsconfig.lib.json",
+              "packages/material/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!packages/material/**/*"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/packages/material"
+          ],
+          "options": {
+            "jestConfig": "packages/material/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/angular"
   },
@@ -15,5 +59,6 @@
     "@nrwl/angular:component": {
       "style": "scss"
     }
-  }
+  },
+  "defaultProject": "material"
 }
