@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ['<rootDir>/packages/material'],
+  projects: ['<rootDir>/packages/material', '<rootDir>/apps/material-demo'],
 };
